@@ -8,3 +8,4 @@ global using Catalog.API.Exceptions;
 global using BuildingBlocks.Behaviors;
 global using FluentValidation;
 global using BuildingBlocks.Exceptions.Handler;
+global using Catalog.API.Data;
