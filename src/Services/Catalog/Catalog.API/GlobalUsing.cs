@@ -9,3 +9,5 @@ global using BuildingBlocks.Behaviors;
 global using FluentValidation;
 global using BuildingBlocks.Exceptions.Handler;
 global using Catalog.API.Data;
+global using HealthChecks.UI.Client;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
