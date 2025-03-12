@@ -1,6 +1,3 @@
-using BuildingBlocks.Behaviors;
-using FluentValidation;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add Services To App DI Container
@@ -19,9 +16,13 @@ builder.Services.AddMarten(config =>
     config.Connection(builder.Configuration.GetConnectionString("Database")!);
 }).UseLightweightSessions();
 
+builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
 var app = builder.Build();
 
 // Configure The Http Request Pipeline
 app.MapCarter();
+
+app.UseExceptionHandler(options =>{});
 
 app.Run();
