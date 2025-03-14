@@ -1,6 +1,9 @@
-﻿using Basket.API.Basket.StoreBasket;
+﻿namespace Basket.API.Basket.GetBasket;
 
-namespace Basket.API.Basket.GetBasket;
+public record GetBasketRequest(string UserName);
+
+public record GetBasketResponse(ShoppingCart cart);
+
 
 public class GetBasketEndpoint : ICarterModule
 {
@@ -12,7 +15,7 @@ public class GetBasketEndpoint : ICarterModule
             var response = result.Adapt<GetBasketResponse>();
             return Results.Ok(response);
         })
-         .WithName("GetBasketByUsername")
+        .WithName("GetBasketByUsername")
         .Produces<GetBasketResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .WithSummary("Get Basket By Username")
