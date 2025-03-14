@@ -11,6 +11,13 @@ builder.Services.AddMediatR(config =>
     config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
 
+builder.Services.AddMarten(config =>
+{
+    config.Connection(builder.Configuration.GetConnectionString("Database")!);
+    config.DisableNpgsqlLogging = true;
+    config.Schema.For<ShoppingCart>().Identity(x => x.UserName);
+}).UseLightweightSessions();
+
 var app = builder.Build();
 
 // Configure The Http Request Pipeline
