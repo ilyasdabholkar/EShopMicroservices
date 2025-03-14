@@ -20,9 +20,12 @@ builder.Services.AddMarten(config =>
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 
+builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
 var app = builder.Build();
 
 // Configure The Http Request Pipeline
 app.MapCarter();
+app.UseExceptionHandler(options => { });
 
 app.Run();
